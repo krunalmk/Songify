@@ -4,5 +4,5 @@ CREATE TABLE songs(
     title text not null,
     artist text not null,
     album text not null,
-    songFile blob not null
+    songFile longblob not null
 );

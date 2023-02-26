@@ -4,7 +4,7 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 
-app = Flask(__name__) #flask app
+app = Flask(__name__ static_folder='static') #flask app
 load_dotenv() #load env
 
 
@@ -27,18 +27,17 @@ def create():
 @app.route("/song/createnew", methods=['POST'])
 def create_new():
     title = request.form['title']
-    short_notes = request.form['shortnotes']
-    price = request.form['price']
-    cursor.execute("INSERT INTO songs(title,short_notes,price) VALUES(%s, %s, %s)", (title, short_notes, price))
-
-    mp3 = request.files["audioFileChooser"]
+    artist = request.form['artist']
+    album = request.form['album']
+    mp3 = request.files["songFile"]
     print( mp3)
-    print(type(mp3)) #This is type string
     # ans = base64.b64decode(bytes(mp3, 'utf-8'))
-    rv = base64.b64encode(mp3.read())  # bytes
-    rv = rv.decode('ascii')  # str
+    songBLOB = base64.b64encode(mp3.read()).decode('ascii')  # bytes
+    print("songBLOB", songBLOB)
+    # songBLOB = songBLOB.decode('ascii')  # str
+    # cursor.execute("INSERT INTO songs(title, artist, album, songFile) VALUES(%s, %s, %s, %s)", (title, artist, album, songBLOB))
+
     # return rv
-    print("HI dear", rv)
     # print(type(ans)) #This is type bytes
     # with open("audioToSave.webm", "wb") as fh:
     #     fh.write(ans)
@@ -65,9 +64,9 @@ def delete(id):
 def update():
     id = request.form['id']
     title = request.form['title']
-    short_notes = request.form['shortnotes']
-    price = request.form['price']
-    cursor.execute("UPDATE songs SET title=%s, short_notes=%s, price=%s WHERE id=%s", (title, short_notes, price, id))
+    artist = request.form['artist']
+    album = request.form['album']
+    cursor.execute("UPDATE songs SET title=%s, short_notes=%s, price=%s WHERE id=%s", (title, artist, album, id))
     return redirect('/')
 
 
@@ -76,9 +75,15 @@ def update():
 #home
 @app.route('/')
 def home():    
+    rows = []
     #fetch 'songs'
     cursor.execute("SELECT * FROM songs")
     rows = cursor.fetchall()
+
+    for eachRow in rows:
+        # eachRow[4] = eachRow[4].encode('ascii')  # str
+        # eachRow[4] = base64.b64decode(eachRow[4])  # bytes
+        eachRow[4] = base64.b64decode(eachRow[4].decode('utf-8').read())  # bytes
 
     return render_template('index.html', rows=rows)
 

@@ -9,7 +9,7 @@
 		<h1 align="center">FLASK CRUD</h1> [<a href="/song/create">Create New Song</a>]
 		<ul align="center" style="list-style:none">
 			{% for row in rows %}
-			<li>{{ row[1]  }} | {{ row[2]  }} | {{ row[3] }} [<a href="/song/edit/{{ row[0] }}">edit</a> | <a href="/song/delete/{{ row[0] }}">delete</a> ]</li><br>
+			<li>{{ row[1]  }} | {{ row[2]  }} | {{ row[3] }} | {{ row[4] }} [<a href="/song/edit/{{ row[0] }}">edit</a> | <a href="/song/delete/{{ row[0] }}">delete</a> ]</li><br>
 			 {% endfor %}
 		</ul>
 

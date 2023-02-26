@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title> FLASK CURD </title>
+	</head>
+
+	<body>
+
+	<form method="POST" action="/song/updateSong">
+
+		<input type="hidden" name="id" value="{{ song[0] }}">
+
+		<label>Title</label>
+		<input type="text" value="{{ song[1] }}" name="title">
+		<br>
+		
+		<label>Short Notes</label>
+		<input type="text" value="{{ song[2] }}" name="shortnotes">
+		<br>
+
+		<label>Price</label>
+		<input type="text" value="{{ song[3] }}" name="price">
+
+		<br>
+		<button type="submit" name="ubtn"> Save Updates </button>
+
+	</form>
+
+	</body>
+
+</html>

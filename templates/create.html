@@ -1,0 +1,54 @@
+<html>
+
+<head>
+	<title> Flask CRUD </title>
+</head>
+
+<body>
+	<form action="/song/createnew" method="POST" enctype="multipart/form-data">
+		<input type="text" placeholder="title" name="title">
+		<br>
+
+		<input type="text" placeholder="shortnotes" name="shortnotes">
+		<br>
+
+		<input type="text" placeholder="price" name="price">
+		<br>
+		<input id="audioFileChooser" name="audioFileChooser" type="file"  accept=".mp3"/>
+		
+		<!-- onchange="readFile(this.files);"> -->
+
+		<button name="ubtn" type="submit"> Create song</button>
+	</form>
+</body>
+<script>
+	function readFile(files) {
+		var fileReader = new FileReader();
+		fileReader.readAsArrayBuffer(files[0]);
+		fileReader.onload = function (e) {
+			// playAudioFile(e.target.result);
+			// if( getFileExtension(files[0].name) === 'mp3')
+			// 	console.log(("Filename: '" + files[0].name + "'"), ("(" + ((Math.floor(files[0].size / 1024 / 1024 * 100)) / 100) + " MB)"));
+			// else
+			// 	alert("Invalid audio format");
+		}
+	}
+
+	// function getFileExtension(filename) {
+	// 	const extension = filename.split('.').pop();
+	// 	return extension;
+	// }
+
+	function playAudioFile(file) {
+		var context = new window.AudioContext();
+		context.decodeAudioData(file, function (buffer) {
+			var source = context.createBufferSource();
+			source.buffer = buffer;
+			source.loop = false;
+			source.connect(context.destination);
+			source.start(0);
+		});
+	}
+</script>
+
+</html>

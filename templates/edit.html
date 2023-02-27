@@ -19,10 +19,11 @@
 
 		<label>Album</label>
 		<input type="text" value="{{ song[3] }}" name="album">
-
+		<br>
 		
 		<label>Song file</label>
-		<input type="text" value="{{ song[4] }}" name="songFile">
+		<!-- <input type="text" value="{{ song[4] }}" name="songFile"> -->
+		<audio controls src="{{ url_for('static',filename=song[4]) }}" type="audio/mp3"></audio>
 
 		<br>
 		<button type="submit" name="ubtn"> Save Updates </button>

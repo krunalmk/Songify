@@ -4,8 +4,10 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 
-app = Flask(__name__ static_folder='static') #flask app
+app = Flask(__name__) #flask app
 load_dotenv() #load env
+UPLOAD_FOLDER = app.root_path #os.path.join(home_dir, "upload")
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 
@@ -32,8 +34,18 @@ def create_new():
     mp3 = request.files["songFile"]
     print( mp3)
     # ans = base64.b64decode(bytes(mp3, 'utf-8'))
-    songBLOB = base64.b64encode(mp3.read()).decode('ascii')  # bytes
-    print("songBLOB", songBLOB)
+    mp3.save(app.config['UPLOAD_FOLDER'])
+    
+    
+    
+    # songBLOB = base64.b64encode(mp3.read()) #.decode('ascii')  # bytes
+    # # print("songBLOB", songBLOB)
+    # file_name = mp3.filename
+    # print("QWERTY", file_name)
+    # with open("QWERTY", "wb") as file:  	# open in binary mode 
+    #     file.write(mp3)
+
+
     # songBLOB = songBLOB.decode('ascii')  # str
     # cursor.execute("INSERT INTO songs(title, artist, album, songFile) VALUES(%s, %s, %s, %s)", (title, artist, album, songBLOB))
 
@@ -80,10 +92,10 @@ def home():
     cursor.execute("SELECT * FROM songs")
     rows = cursor.fetchall()
 
-    for eachRow in rows:
-        # eachRow[4] = eachRow[4].encode('ascii')  # str
-        # eachRow[4] = base64.b64decode(eachRow[4])  # bytes
-        eachRow[4] = base64.b64decode(eachRow[4].decode('utf-8').read())  # bytes
+    # for eachRow in rows:
+    #     # eachRow[4] = eachRow[4].encode('ascii')  # str
+    #     # eachRow[4] = base64.b64decode(eachRow[4])  # bytes
+    #     eachRow[4] = base64.b64decode(eachRow[4].decode('utf-8').read())  # bytes
 
     return render_template('index.html', rows=rows)
 

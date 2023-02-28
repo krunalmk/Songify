@@ -16,7 +16,7 @@ Import mysql from `mysql/testapp.sql`
 
 * Grant permissions to files:
     ```
-    chmod a+x app.py
+    chmod -x app.py
     chmod a+x create-table.py
     ```
 

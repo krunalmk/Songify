@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='general.css') }}"/>
 <body>
 
-	<h1 align="center">Songify</h1> [<a href="/song/create">Create New Song</a>]
+	<h1 align="center">Songify</h1> 
+	<center><strong><button><a href="/song/create">Create New Song</a></button></strong></center>
 	<ul align="center" style="list-style:none">
 
 		<form method="POST" action="/song/search">
@@ -47,7 +48,6 @@
 			<span>{{ song[3] }}</span>
 			<br>
 
-			<label>Song file</label>
 			<audio controls src="{{ url_for('static',filename=song[4]) }}" type="audio/mp3"></audio>
 			<br>
 			<form class="crudButtons" method="post" action="/song/view">

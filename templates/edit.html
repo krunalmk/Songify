@@ -1,35 +1,34 @@
 <html>
-	<head>
-		<title> Songify </title>
-	</head>
 
-	<body>
+<head>
+	<title> Songify </title>
+</head>
 
-	<form method="POST" action="/song/updateSong">
+<body>
+	<center>
+		<form method="POST" action="/song/updateSong">
 
-		<input type="hidden" name="id" value="{{ song[0] }}">
+			<input type="hidden" name="id" value="{{ song[0] }}">
 
-		<label>Title</label>
-		<input type="text" value="{{ song[1] }}" name="title">
-		<br>
-		
-		<label>Artist</label>
-		<input type="text" value="{{ song[2] }}" name="artist">
-		<br>
+			<label>Title</label>
+			<input type="text" value="{{ song[1] }}" name="title">
+			<br>
 
-		<label>Album</label>
-		<input type="text" value="{{ song[3] }}" name="album">
-		<br>
-		
-		<label>Song file</label>
-		<!-- <input type="text" value="{{ song[4] }}" name="songFile"> -->
-		<audio controls src="{{ url_for('static',filename=song[4]) }}" type="audio/mp3"></audio>
+			<label>Artist</label>
+			<input type="text" value="{{ song[2] }}" name="artist">
+			<br>
 
-		<br>
-		<button type="submit" name="ubtn"> Save Updates </button>
+			<label>Album</label>
+			<input type="text" value="{{ song[3] }}" name="album">
+			<br>
 
-	</form>
+			<audio controls src="{{ url_for('static',filename=song[4]) }}" type="audio/mp3"></audio>
 
-	</body>
+			<br>
+			<button type="submit" name="ubtn"> Save Updates </button>
+
+		</form>
+	</center>
+</body>
 
 </html>

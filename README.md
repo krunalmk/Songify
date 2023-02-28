@@ -38,8 +38,37 @@ Import mysql from `mysql/testapp.sql`
     http://127.0.0.1:5000/
 
 ## Homepage
-![Home]()
+![Home](static/homePage.png)
 
+## Create song
+Click "Create New Song" button in homepage.
+![Create](static/songCreate.png)
 
-## Edit product
-![View]()
+## View song
+Click "View" button in homepage of that particular song division.
+![View](static/viewSong.png)
+
+## Download song
+Click the "three dot menu button" of the audio file of the song division that you want to download. You get prompt to "Download". Click to download the song.
+![Download](static/downloadSong.png)
+
+## Edit song
+After clicking "Edit" button.
+![Edit_1](static/editSong-Part1.png)
+
+Updated data change visible in homepage
+![Edit_2](static/editSong-Part2.png)
+
+## Search using title
+![SearchTitle](static/searchUsingTitle.png)
+
+## Search using artist
+![SearchArtist](static/searchUsingArtist.png)
+
+## Search using album
+![SearchAlbum](static/searchUsingAlbum.png)
+
+## Delete song
+Click "Delete" button in homepage in the song division that you want to delete.
+The view of homepage once you delete song with ID:1.
+![DeletedSong](static/deleteSong.png)

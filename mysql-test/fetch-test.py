@@ -1,20 +1,12 @@
-import mysql.connector
+import sqlite3
 
-cnx = mysql.connector.connect(user='root', password='root', host='localhost', database='musicDB')
-
-cursor = cnx.cursor()
-
-
+conn = sqlite3.connect('../musicDB.db',check_same_thread=False)
+cursor = conn.cursor()
 cursor.execute("SELECT * FROM songs")
-
-
 rows = cursor.fetchall()
 
-
 for row in rows:
-    print(row[1])
+    print(row)
 
 cursor.close()
-cnx.close()
-
-
+conn.close()

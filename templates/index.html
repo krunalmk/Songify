@@ -4,7 +4,7 @@
 <head>
 	<title> Songify </title>
 </head>
-
+<link rel="stylesheet" href="{{ url_for('static', filename='general.css') }}"/>
 <body>
 
 	<h1 align="center">Songify</h1> [<a href="/song/create">Create New Song</a>]
@@ -26,7 +26,7 @@
 
 			<button type="submit" name='search' value="Search">Search</button>
 		</form>
-		<a href="/"><button >Reset search</button></a>
+		<a href="/"><button>Reset search</button></a>
 
 		{% for song in songs %}
 		<div style="border:1px solid black;">
@@ -50,8 +50,20 @@
 			<label>Song file</label>
 			<audio controls src="{{ url_for('static',filename=song[4]) }}" type="audio/mp3"></audio>
 			<br>
-			[<a href="/song/view/{{ song[0] }}">View</a> | <a href="/song/edit/{{ song[0] }}">Edit</a> | 
-				<a href="/song/delete/{{ song[0] }}">Delete</a> ]
+			<form class="crudButtons" method="post" action="/song/view">
+				<input type="text" name="attributeValue" value="{{ song[0] }}" hidden />
+				<button type="submit">View</a> </button>
+			</form>
+
+			<form class="crudButtons" method="post" action="/song/edit">
+				<input type="text" name="attributeValue" value="{{ song[0] }}" hidden />
+				<button type="submit">Edit</button>
+			</form>
+
+			<form class="crudButtons" method="post" action="/song/delete">
+				<input type="text" name="attributeValue" value="{{ song[0] }}" hidden />
+				<button type="submit">Delete</a> </button>
+			</form>
 			<br>
 		</div>
 		{% endfor %}

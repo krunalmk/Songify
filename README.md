@@ -1,12 +1,45 @@
-# flask-crud
-Basic python flask crud application with mysql
+# Songify
 
 Import mysql from `mysql/testapp.sql`
 
+## Project setup
+
+* Install all libraries from requirements.txt using
+    ```
+    pip install -r requirements.txt
+    ```
+
+* Once installed, open terminal ( console) in the directory where you stored Songify. Then execute 
+    ```
+    cd Songify
+    ```
+
+* Grant permissions to files:
+    ```
+    chmod a+x app.py
+    chmod a+x create-table.py
+    ```
+
+* To setup the SQLite3 db, you need to execute a python script:
+    ```
+    python create-table.py
+    ```
+
+* This will create file, `musicDB.db`. You can open it using `sqlitebrowser`.
+* If you don't have sqlitebrpwser, follow the steps to download this by [clicking here](https://sqlitebrowser.org/dl/)
+
+* Once the db is created you can run the server using following command:
+    ```
+    python app.py
+    ```
+
+* *Open the project in web browser using*
+    
+    http://127.0.0.1:5000/
 
 ## Homepage
-![Screenshot from 2023-01-21 20-16-11](https://user-images.githubusercontent.com/59218902/213872271-5c50feb3-510d-455d-9ab5-40fe97aa6ed5.png)
+![Home]()
 
 
 ## Edit product
-![Screenshot from 2023-01-21 20-16-21](https://user-images.githubusercontent.com/59218902/213872283-8b7d8511-e4c7-42a3-ac64-f3ec21ae3aa8.png)
+![View]()

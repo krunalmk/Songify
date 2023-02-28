@@ -47,9 +47,9 @@ def edit():
     return render_template('edit.html', song=row)
 
 
-@app.route("/song/view", methods = ['POST'])
+@app.route("/song/view", methods = ['GET'])
 def view():
-    id = request.form['attributeValue']
+    id = request.args.get('attributeValue')
     sqlQuery = "SELECT * FROM songs WHERE id={}".format(id)
     cursor.execute(sqlQuery)
     row = cursor.fetchone()

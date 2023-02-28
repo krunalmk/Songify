@@ -50,7 +50,7 @@
 
 			<audio controls src="{{ url_for('static',filename=song[4]) }}" type="audio/mp3"></audio>
 			<br>
-			<form class="crudButtons" method="post" action="/song/view">
+			<form class="crudButtons" method="get" action="/song/view">
 				<input type="text" name="attributeValue" value="{{ song[0] }}" hidden />
 				<button type="submit">View</a> </button>
 			</form>

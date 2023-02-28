@@ -18,6 +18,21 @@ def create():
     return render_template('create.html')
 
 
+@app.route("/song/search", methods=["POST"])
+def search():
+    if request.form["search"]:
+        songs = []
+        attribute = request.form['attribute']
+        attributeValue = request.form['attributeValue']
+        sqlQuery = "SELECT * FROM songs WHERE {}='{}'".format(attribute,attributeValue)
+        print("TTTTTTTTT", sqlQuery)
+        if cursor.execute(sqlQuery):
+            songs = cursor.fetchall()
+        else:
+            songs = []
+        return render_template('index.html', songs=songs)
+
+
 @app.route("/song/createnew", methods=['POST'])
 def create_new():
     title = request.form['title']
@@ -46,6 +61,14 @@ def edit(id):
     cursor.execute(sqlQuery)
     row = cursor.fetchone()
     return render_template('edit.html', song=row)
+
+
+@app.route("/song/view/<int:id>")
+def view(id):
+    sqlQuery = "SELECT * FROM songs WHERE id={}".format(id)
+    cursor.execute(sqlQuery)
+    row = cursor.fetchone()
+    return render_template('view.html', song=row)
 
 
 @app.route("/song/delete/<int:id>")
@@ -83,19 +106,13 @@ def home():
     rows = []
     #fetch 'songs'
     cursor.execute("SELECT * FROM songs")
-    rows = cursor.fetchall()
+    songs = cursor.fetchall()
 
-    for eachRow in rows:
-        # eachRow[4] = str(eachRow[4])
-        eachRow = [eachRow[1],eachRow[2],eachRow[3],str(eachRow[4])]
-        print(eachRow)
-    #     # eachRow[4] = eachRow[4].encode('ascii')  # str
-    #     # eachRow[4] = base64.b64decode(eachRow[4])  # bytes
-    #     eachRow[4] = base64.b64decode(eachRow[4].decode('utf-8').read())  # bytes
-
-    return render_template('index.html', rows=rows)
-
-
+    for eachSong in songs:
+        eachSong = [eachSong[1],eachSong[2],eachSong[3],str(eachSong[4])]
+        print(eachSong)
+    return render_template('index.html', songs=songs)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title> Flask CRUD </title>
-	</head>
 
-	<body>
+<head>
+	<title> Songify </title>
+</head>
 
-		<h1 align="center">FLASK CRUD</h1> [<a href="/song/create">Create New Song</a>]
-		<ul align="center" style="list-style:none">
-			{% for row in rows %}
-			<li>{{ row[1]  }} | {{ row[2]  }} | {{ row[3] }} | <audio controls src="{{ url_for('static',filename=row[4]) }}" type="audio/mp3"></audio> [<a href="/song/edit/{{ row[0] }}">edit</a> | <a href="/song/delete/{{ row[0] }}">delete</a> ]</li><br>
-			
-			 {% endfor %}
-		</ul>
+<body>
 
+	<h1 align="center">Songify</h1> [<a href="/song/create">Create New Song</a>]
+	<ul align="center" style="list-style:none">
 
-	</body>
-	
+		<form method="POST" action="/song/search">
+			Choose title/artist/album and then search with value
+			<br>
+			<input type="radio" id="attribute" name="attribute" value="title" checked>
+			  <label for="attribute">Title</label>
+			<input type="radio" id="attribute" name="attribute" value="artist">
+			  <label for="attribute">Artist</label>
+			<input type="radio" id="attribute" name="attribute" value="album">
+			  <label for="attribute">Album</label>
+			<br>
+
+			  <label for="attribute">Enter value</label>
+			<input type="text" id="attributeValue" name="attributeValue">
+
+			<button type="submit" name='search' value="Search">Search</button>
+		</form>
+		<a href="/"><button >Reset search</button></a>
+
+		{% for song in songs %}
+		<div style="border:1px solid black;">
+
+			<label>ID</label>:
+			<span>{{ song[0] }}</span>
+			<br>
+
+			<label>Title</label>:
+			<span>{{ song[1] }}</span>
+			<br>
+
+			<label>Artist</label>:
+			<span>{{ song[2] }}</span>
+			<br>
+
+			<label>Album</label>:
+			<span>{{ song[3] }}</span>
+			<br>
+
+			<label>Song file</label>
+			<audio controls src="{{ url_for('static',filename=song[4]) }}" type="audio/mp3"></audio>
+			<br>
+			[<a href="/song/view/{{ song[0] }}">View</a> | <a href="/song/edit/{{ song[0] }}">Edit</a> | 
+				<a href="/song/delete/{{ song[0] }}">Delete</a> ]
+			<br>
+		</div>
+		{% endfor %}
+
+	</ul>
+
+</body>
+
 </html>
-		

@@ -25,7 +25,7 @@
     __Note: Currently you need not execute above statement if you are able to open `musicDB.db` in your local machine.__
 
 * This will create file, `musicDB.db`. You can open it using `sqlitebrowser`.
-* If you don't have sqlitebrpwser, follow the steps to download this by [clicking here](https://sqlitebrowser.org/dl/)
+* If you don't have sqlitebrowser, follow the steps to download this by [clicking here](https://sqlitebrowser.org/dl/)
 
 * Once the db is created you can run the server using following command:
     ```

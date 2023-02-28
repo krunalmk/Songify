@@ -1,7 +1,5 @@
 # Songify
 
-Import mysql from `mysql/testapp.sql`
-
 ## Project setup
 
 * Install all libraries from requirements.txt using

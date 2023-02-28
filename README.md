@@ -2,14 +2,14 @@
 
 ## Project setup
 
-* Install all libraries from requirements.txt using
-    ```
-    pip install -r requirements.txt
-    ```
-
 * Once installed, open terminal ( console) in the directory where you stored Songify. Then execute 
     ```
     cd Songify
+    ```
+
+* Install all libraries from requirements.txt using
+    ```
+    pip install -r requirements.txt
     ```
 
 * Grant permissions to files:

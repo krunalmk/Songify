@@ -47,6 +47,8 @@ Click "Create New Song" button in homepage.
 
 ### View song
 Click "View" button in homepage of that particular song division.
+
+__This link is unique for every song.__
 ![View](static/viewSong.png)
 
 ### Download song
